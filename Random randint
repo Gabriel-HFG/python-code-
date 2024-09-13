@@ -1,0 +1,19 @@
+import random
+
+def randint(argument_1, argument_2):
+    if argument_1 > argument_2:
+        argument_1, argument_2 = argument_2, argument_1
+    return random.randint(argument_1, argument_2)
+
+while True:
+    argument_1 = random.randint(1, 1000)
+    argument_2 = random.randint(1, 1000)
+    selected_number = randint(argument_1, argument_2)
+    print(f'Range of random numbers is {argument_1} to {argument_2} and the selected number was {selected_number}')
+    awnser = input('\nWould you like to generate another number 1 = yes, 2 = no\nInput: ')
+    while awnser not in ('1', '2'): 
+        awnser = input('\nPlease type a valid input: would you like to generate another number 1 = yes, 2 = no\nInput": ')
+    if awnser == '1':
+        continue
+    if awnser == '2':
+        break        
