@@ -1,0 +1,48 @@
+import random
+
+games_played = 0
+games_won = 0
+games_lost = 0
+games_tied = 0
+
+def print_stars(output):
+    stars_output = f'\n********** {output}\n *****'
+    print(stars_output)
+def red(output):
+    red_output = f'\033[91m {output} \033[0m'
+    return red_output
+def green(output):
+    green_output = f"\033[92m{output}\033[0m"
+    return green_output
+def blue(output):
+    blue_output = f"\033[94m{output}\033[0m"
+    return blue_output
+
+while True:
+    print_stars('\nChoose one\n1. Rock\n2. Paper\n3. Scissors')
+    human_input = input('\nInput: ')
+    computer_input = str(random.randint(1, 3))
+    while human_input not in ('1', '2', '3', '4'):
+        print_stars('\nChoose a valid input\n1. Rock\n2. Paper\n3. Scissors')
+        human_input = input('\nInput: ')
+    games_played += 1
+    if human_input == computer_input:
+        print_stars(blue('\nThe game is a tie'))
+        games_tied += 1
+    elif (human_input == '1' and computer_input == '3') or \
+         (human_input == '2' and computer_input == '1') or \
+         (human_input == '3' and computer_input == '2'):
+        print_stars(green('\nYou win the game'))
+        games_won += 1
+    else:
+        print_stars(red('\nYou lose the game'))
+        games_lost += 1
+    print_stars('\nWould you like to play again?\n1. Yes\n2. No')
+    again = input('\nInput: ')
+    while again not in ('1', '2'):
+        print_stars('\nPick a valid input\n1. Yes\n2. No')
+        again = input('\nInput: ')
+    if again == '2':
+        stats = (f'\nGames Played: {games_played}\nGames Won: {games_won}\nGames Lost: {games_lost}\nGames Tied: {games_tied}')
+        print_stars(stats)
+        exit()
