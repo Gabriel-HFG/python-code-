@@ -1,0 +1,8 @@
+import math
+
+w = float(input('Enter the width of the tire in mm\nInput: '))
+a = float(input('Enter the aspect ratio of the tire\nInput: '))
+d = float(input('What is the diameter of the wheel in inches\nInput: '))
+
+awnser = (((float(math.pi) * (w ** 2)) * (a * ((w * a) + (2540.0 * d))))/10000000000)
+print(round(awnser, 2))
