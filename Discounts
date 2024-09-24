@@ -1,0 +1,29 @@
+import datetime
+
+discount = 0.0
+grand_total = 0.0
+today = datetime.datetime.today().weekday()
+
+while True: 
+    input_amount = input('What is the items cost (to exit input 0)?\nInput: ')
+    try:
+        input_amount = float(input_amount)
+        if input_amount == 0.0:
+            break
+        else:
+            grand_total += input_amount 
+            print('The total amount is', grand_total)
+    except:
+        print('Please enter a valid number.')
+if today in [1, 2]:
+    if grand_total >= 50:
+        discount = grand_total * 0.1
+        print('You received a discount of: $',discount)
+    else:
+        print('In order to get today\'s special discount, you need', 50 - grand_total, 'more dollars to be eligible')
+
+grand_total_after_discount = grand_total - discount
+tax = grand_total_after_discount * 0.06 
+grand_total_after_tax = grand_total_after_discount + tax
+
+print('\nDiscount: $',discount,'\nTaxes: $',tax,'\nTotal: $',grand_total_after_tax)
