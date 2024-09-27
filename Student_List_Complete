@@ -1,0 +1,68 @@
+
+import time
+
+student = ['felix','joseph','hyrum','gabo','alyssa','someone','luisa','name 8','whassup','fernanda']
+
+def display_students():
+    return "\n" .join(f"Name \033[31m{test + 1}\033[0m: {name}" for test, name in enumerate(student))
+
+def add_student():
+    name = input('Which name would you like to add to the list?\nInput: ')
+    student.append(name.lower())
+    print(display_students())
+
+def remove_student():
+    name = input('Which name would you like to remove from the list?\nInput: ')
+    name = name.lower().replace(' ', '')
+    if name in student:
+        student.remove(name)
+        print(f"{display_students()}\n\n\033[31mname removed from list...\033[0m")
+    else:
+        print("\nthat name was not in the list\nMake sure to choose one of the following names: \033[31m", ", ".join(student),"\033[0m")
+
+def pop_student():
+    if not student:
+        print('\n\033[35mThe list is empty...\033[0m')
+    else:
+        name_removed = student.pop()
+        print(f"\nThe updated list:\n{display_students()}")
+        print(f"\nThe name removede from the list is \033[31m{name_removed}\033[0m")
+
+def update_student():
+    name = input('Which name would you like to update from the list?\nInput: ')
+    name = name.lower().replace(' ', '')
+    if name in student:
+        student.remove(name)
+        update = input('Which name would you like to use in order to update the name\nInput:')
+        student.append(update.lower())
+        print(display_students())
+    else:
+        print("The name you inputed was not found please select one avalible in the list:\n", ", ".join(student),"\033[0m")
+
+def menu():
+    while True:
+        choice = input("\n\033[32mMenu:\033[0m"
+              "\n1. Add a student"
+              "\n2. Remove a student"
+              "\n3. Pop a student"
+              "\n4. Update a student's name"
+              "\n5. Exit"
+              "\n6. Display List"
+              "\nEnter your choice: ")
+        while choice not in ['1','2','3','4','5','6']:
+            choice = input('Please choose a valid input\nInput: ')
+        if choice == '6':
+            print(f"\n{display_students()}")
+            time.sleep(.5)
+        if choice == '1':
+            add_student()
+            time.sleep(.5)
+        if choice == '2':
+            remove_student()
+        if choice == '3':
+            pop_student()
+        if choice == '4':
+            update_student()
+        if choice == '5':
+            exit()
+menu()
