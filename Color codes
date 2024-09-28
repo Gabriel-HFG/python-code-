@@ -1,0 +1,69 @@
+# Basic Text Colors
+Color	ANSI Code
+Black	\033[30m
+Red	\033[31m
+Green	\033[32m
+Yellow	\033[33m
+Blue	\033[34m
+Magenta	\033[35m
+Cyan	\033[36m
+White	\033[37m
+Reset	\033[0m
+# Bold Variants
+# You can also make these colors bold by adding 1; before the color code:
+
+Color	Bold ANSI Code
+Black	\033[1;30m
+Red	\033[1;31m
+Green	\033[1;32m
+Yellow	\033[1;33m
+Blue	\033[1;34m
+Magenta	\033[1;35m
+Cyan	\033[1;36m
+White	\033[1;37m
+
+# Background Colors
+# You can also set background colors using the following codes:
+
+Color	Background ANSI Code
+Black	\033[40m
+Red	\033[41m
+Green	\033[42m
+Yellow	\033[43m
+Blue	\033[44m
+Magenta	\033[45m
+Cyan	\033[46m
+White	\033[47m
+Reset	\033[0m
+
+# Basic color print program
+
+# Text colors
+print("\033[30mBlack\033[0m")
+print("\033[31mRed\033[0m")
+print("\033[32mGreen\033[0m")
+print("\033[33mYellow\033[0m")
+print("\033[34mBlue\033[0m")
+print("\033[35mMagenta\033[0m")
+print("\033[36mCyan\033[0m")
+print("\033[37mWhite\033[0m")
+
+# Bold text colors
+print("\033[1;30mBold Black\033[0m")
+print("\033[1;31mBold Red\033[0m")
+print("\033[1;32mBold Green\033[0m")
+print("\033[1;33mBold Yellow\033[0m")
+print("\033[1;34mBold Blue\033[0m")
+print("\033[1;35mBold Magenta\033[0m")
+print("\033[1;36mBold Cyan\033[0m")
+print("\033[1;37mBold White\033[0m")
+
+# Background colors
+print("\033[40mBlack BG\033[0m")
+print("\033[41mRed BG\033[0m")
+print("\033[42mGreen BG\033[0m")
+print("\033[43mYellow BG\033[0m")
+print("\033[44mBlue BG\033[0m")
+print("\033[45mMagenta BG\033[0m")
+print("\033[46mCyan BG\033[0m")
+print("\033[47mWhite BG\033[0m")
