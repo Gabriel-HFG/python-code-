@@ -1,0 +1,42 @@
+import random
+
+def main():
+    global plural_or_single
+    plural_or_single = random.choice([1, 2])
+    for number in range(1, 7):
+        print(f"{number}. {make_sentence()}")
+
+def get_word(type):
+    words = {
+        'determiner': ["a", "one", "the"] if plural_or_single == 1 else ["some", "many", "the"],
+        'noun': [
+            "apple", "book", "car", "dog", "elephant", "flower", "guitar", "house", "island", "jacket",
+            "kite", "lamp", "mountain", "notebook", "orange", "pencil", "queen", "rabbit", "star", 
+            "tree", "umbrella", "violin", "whale", "xylophone", "yacht", "zebra", "table", "chair", 
+            "computer", "phone", "bicycle", "clock", "egg", "fish", "grape", "hat", "ice", "jewel", 
+            "key", "leaf", "mirror", "necklace", "ocean", "piano", "quilt", "ring", "shoe", "turtle", 
+            "uniform", "vase", "window", "yarn", "zoo"] if plural_or_single == 1 else [
+            "apples", "books", "cars", "dogs", "elephants", "flowers", "guitars", "houses", "islands", 
+            "jackets", "kites", "lamps", "mountains", "notebooks", "oranges", "pencils", "queens", 
+            "rabbits", "stars", "trees", "umbrellas", "violins", "whales", "xylophones", "yachts", 
+            "zebras", "tables", "chairs", "computers", "phones", "bicycles", "clocks", "eggs", "fishes", 
+            "grapes", "hats", "ices", "jewels", "keys", "leaves", "mirrors", "necklaces", "oceans", 
+            "pianos", "quilts", "rings", "shoes", "turtles", "uniforms", "vases", "windows", "yarns", "zoos"],
+        'verb': [
+            "walks", "runs", "jumps", "sings", "reads", "writes", "plays", "cooks", "dances", "talks", 
+            "thinks", "draws", "watches", "laughs", "hides", "swims", "drives", "listens", "teaches", 
+            "builds", "cleans", "shares", "studies", "travels", "creates", "opens", "closes", "fixes", 
+            "explores", "sends", "receives", "remembers", "enjoys", "helps", "shows", "discovers", 
+            "trains", "paints", "competes", "wishes", "sells", "buys", "fishes", "celebrates", "prays", 
+            "calls", "sleeps", "searches"] if plural_or_single == 1 else [
+            "walk", "run", "jump", "sing", "read", "write", "play", "cook", "dance", "talk", "think", 
+            "draw", "watch", "laugh", "hide", "swim", "drive", "listen", "teach", "build", "clean", 
+            "share", "study", "travel", "create", "open", "close", "fix", "explore", "send", "receive", 
+            "remember", "enjoy", "help", "show", "discover", "train", "paint", "compete", "wish", 
+            "sell", "buy", "fish", "celebrate", "pray", "call", "sleep", "search", "collaborate", "communicate"]}
+    return random.choice(words[type])
+
+def make_sentence():
+    return (f"{(get_word('determiner')).capitalize()} {get_word('noun')} {get_word('verb')}.")
+
+main()
