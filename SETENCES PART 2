@@ -1,0 +1,52 @@
+import random
+
+def main():
+    global plural_or_single
+    plural_or_single = random.choice([1, 2]) 
+    for number in range(1, 7):
+        sentence = make_sentence()
+        print(f"{number}. {sentence}")
+
+def get_random_word(word):
+    return random.choice(word)
+
+def make_sentence():
+    sentence = (f"{get_determiner()} {get_adjective()} {get_noun()} {get_verb()} {get_adjective()} {get_prepositional_phrase()} {get_extra_conjunctions()} {get_verb()} {get_noun()} {get_prepositional_phrase()}.")
+    sentence = sentence.capitalize()
+    return sentence
+
+def get_adjective():
+    adjectives = [ "beautiful", "happy", "sad", "bright", "dark",
+        "quick", "slow", "lively", "eager", "smooth",]
+    return get_random_word(adjectives)
+
+def get_determiner():
+    singular_determiners = [ "a", "an", "the", "this", "that", "my", "your", "his", "her", "its", "our", "their",
+        "each", "every", "one", "another", "any", "some", "no", "such", "what", "which", "whose",]
+    plural_determiners = [ "the", "these", "those", "my", "your", "his", "her", "its", "our", "their",
+        "both", "several", "many", "few", "all", "some", "most", "none", "other",]
+    return get_random_word(singular_determiners if plural_or_single == 1 else plural_determiners)
+
+def get_noun():
+    singular_nouns = [ "apple", "book", "car", "dog", "elephant", "flower", "guitar", "house", "island",]
+    plural_nouns = [ "apples", "books", "cars", "dogs", "elephants", "flowers", "guitars", "houses", "islands",]
+    return get_random_word(singular_nouns if plural_or_single == 1 else plural_nouns)
+
+def get_verb():
+    singular_verbs = [ "walks", "runs", "jumps", "sings", "reads", "writes",]
+    plural_verbs = [ "walk", "run", "jump", "sing", "read", "write",]
+    return get_random_word(singular_verbs if plural_or_single == 1 else plural_verbs)
+
+def get_preposition():
+    prepositions = ["aboard", "about", "above", "across", "after", "against", "along", "among", "around"]
+    return get_random_word(prepositions)
+
+def get_extra_conjunctions():
+    conjunctions = [ "and", "but", "or", "nor", "for", "so", "yet", "either", "neither", "both",
+    "whether", "although", "because", "since", "unless", "while", "after", "before", "until", "as",]
+    return get_random_word(conjunctions)
+
+def get_prepositional_phrase():
+    return f"{get_preposition()} {get_determiner()} {get_noun()}"
+
+main()
