@@ -1,0 +1,22 @@
+contacts = {}
+with open('random_contacts.csv', 'r') as file:
+    lines = file.readlines()[1:]
+    for line in lines:
+        Name,Last_name,Number,Email = line.strip().split(',')
+        contacts[Last_name] = [Name,Number,Email]
+while True:
+    human_input = input('\n\033[92mInputs:\033[0m\nLast name: for specific info\nAll: for all the information\nExit: to leave\nInput: ')
+    if human_input.capitalize() in contacts:
+        contacts[human_input] = Name,Number,Email
+        print(f"\nContact Information For: \033[91m{human_input.capitalize()}\033[0m   \nFirst name: \033[92m{Name}\033[0m   \nPhone Number: \033[93m{Number}\033[0m   \nEmail Address: \033[96m{Email}\033[0m")
+    elif human_input.replace(" ", "").capitalize() == 'All':
+        print("\nContact List:\n")  # Asthetics
+        print(f"{'Last Name':<15} {'Name':<15} {'Number':<15} {'Email':<25}") #spacing
+        print("-" * 70)  # Asthetics
+        for Last_name, info in contacts.items():
+            print(f"\033[91m{Last_name:<15}\033[0m \033[92m{info[0]:<15}\033[0m \033[93m{info[1]:<15}\033[0m \033[96m{info[2]:<25}\033[0m")
+
+    elif human_input.replace(" ","").capitalize() == "Exit":
+        exit()
+    else:
+        print('\nNo information for:',human_input.capitalize(),'was found...\nor you have done an incorrect input.')
