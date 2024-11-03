@@ -1,0 +1,44 @@
+import time
+
+products = {}
+product_ids = []
+quantities = []
+
+def main():
+    converter_products()
+    converter_request()
+    print(f"\n{'Product':<15} {'Quantity':<10} {'Price':<10} {'Total':<10}")
+    print("-" * 45)
+    
+    subtotal = 0
+    total_quantity = 0
+    for product, amount in zip(product_ids, quantities):
+        product_name, product_price = products[product]
+        product_price = float(product_price)
+        
+        total_quantity += amount
+        total_price = product_price * amount
+        subtotal += total_price 
+        
+        print(f"{product_name:<15} {amount:<10} {product_price:<10} {total_price:<10}")
+    
+    print(f"\nItems purchased: {total_quantity} \nSubtotal: ${round(subtotal,2)}\nTax: ${round(subtotal * 0.06, 2)}\nTotal: ${round(subtotal * 1.06, 2)}")
+    payment = input("Amount in payment?\nInput: ")
+
+def converter_products():
+    with open('products.csv', 'r') as file:
+        lines = file.readlines()[1:]
+        for line in lines:
+            product, name, price = line.strip().split(',')
+            products[product] = [name, price]
+
+def converter_request():
+    with open('request.csv', 'r') as file:
+        lines = file.readlines()[1:]
+        for line in lines:
+            product, quantity = line.strip().split(',')
+            product_ids.append(product)
+            quantities.append(int(quantity))
+
+if __name__ == "__main__":
+    main()
