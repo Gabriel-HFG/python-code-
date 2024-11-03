@@ -13,7 +13,7 @@ def main():
     if vin in vehicles:
         data = vehicles[vin]
         print(f"Vehicle Information for VIN {vin}:")
-        print(f"Year: {data[0]}/nManufacturer: {data[1]}/nModel: {data[2]}/nColor: {data[3]}/nengine Design: {data[4]}/nEngine Displacement: {data[5]}L")
+        print(f"Year: {data[0]}\nManufacturer: {data[1]}\nModel: {data[2]}\nColor: {data[3]}\nengine Design: {data[4]}\nEngine Displacement: {data[5]}L")
     else:
         print("The VIN entered is not in the dictionary.")
 
