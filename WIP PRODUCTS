@@ -1,5 +1,6 @@
-import time
+from datetime import date
 
+today = date.today()
 products = {}
 product_ids = []
 quantities = []
@@ -19,11 +20,23 @@ def main():
         total_quantity += amount
         total_price = product_price * amount
         subtotal += total_price 
-        
         print(f"{product_name:<15} {amount:<10} {product_price:<10} {total_price:<10}")
     
     print(f"\nItems purchased: {total_quantity} \nSubtotal: ${round(subtotal,2)}\nTax: ${round(subtotal * 0.06, 2)}\nTotal: ${round(subtotal * 1.06, 2)}")
-    payment = input("Amount in payment?\nInput: ")
+    payment = input("\nAmount in payment?\nInput: ")
+    while True:
+        try:
+            payment = float(payment)
+        except:
+            payment = input("\nPlease enter a valid amount\nAmount in payment?\nInput: ")
+        if payment < float(round(subtotal * 1.06, 2)):
+            print(f"Thank you for stealing from the store you still need to pay: ${payment - round(subtotal * 1.06, 2)}")
+            print("Date today:", today)
+            exit()
+        else:
+            print(f"Your change was: ${payment - round(subtotal * 1.06, 2)}")
+            print("Date today:", today)
+            exit()
 
 def converter_products():
     with open('products.csv', 'r') as file:
